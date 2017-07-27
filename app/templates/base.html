@@ -9,7 +9,12 @@
     {% endif %}
 </head>
 <body>
-    <div>Microblog: <a href="/index">Home</a></div>
+    <ul>
+    {% for message in get_flashed_messages() %}
+        <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+    <div>Microblog: <a href="/index">Home</a> <a href="/login">Login</a></div>
     <hr>
     {% block content %}{% endblock %}
 </body>

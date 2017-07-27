@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+{% extends "base.html" %}
+{% block content %}
+<h1>Please Sign In</h1>
+    <form action="" method="post" name="login">
+    {{ form.csrf_token }}
+    <p>
+        Please enter your Name:<br>
+        {{ form.name(size=80) }}<br>
+        {% for error in form.errors.name %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        Password:<br>
+        {{ form.password }}<br>
+        {% for error in form.errors.password %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>{{ form.remember_me(class='checkbox') }}Remember me</p>
+    <p><input type="submit" value="Sign In"></p>
+    </form>
+{% endblock %}
 </html>
